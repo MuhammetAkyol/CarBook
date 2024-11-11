@@ -1,0 +1,71 @@
+﻿@model List<ResultAllBlogsWithAuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int Count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Listesi ve İşlemleri</h4>
+                        <p class="card-subtitle mb-4">
+                           Bloglarla İlgili Silme, Güncelleme ve Blog Listesi Erişimini Görebelirsiniz.
+                           Yeni Blog Ekleme İşlemi Admin Tarafından Yapılmamaktadır. Eğer Blog Ekleme İşlemi Yapmak İsterseniz Sisteme Yazar Olarak Giriş Yapmanız Gerekmektedir.
+                           Her Yazar Sadece Kendi Bloglarını Güncelleyebilir. Bunun İçin Login/WriterLogin Sayfası Üzerinden Giriş Yapabilirsiniz.
+                        </p>
+                        @if (Model.Count == 0)
+                        {
+                            <div class="alert alert-danger mt-3" role="alert">
+                                <p><i>Daha Önce Eklenen Herhangi Bir Marka Bulunamadı. Aşağıdaki Yeni Marka Girişi Butonundan Bir Marka Ekleyebilirsiniz</i></p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Başlık</th>
+                                            <th>Yazar</th>
+                                            <th>Kategori</th>
+                                            <th>Tarih</th>
+                                            <th>Sil</th>
+                                            <th>Blog'u Aç</th>
+                                            <th>Yorumlar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            Count++;
+                                            <tr>
+                                                <td>@Count</td>
+                                                <td>@item.title</td>
+                                                <td>@item.authorName</td>
+                                                <td>@item.categoryID</td>
+                                                <td>@item.createedDate</td>
+                                                <td><a href="/Admin/AdminBlog/RemoveBlog/@item.blogID" class="btn btn-outline-danger">Sil</a></td>
+                                                <td><a href="/Blog/BlogDetail/@item.blogID" class="btn btn-outline-dark">Blog'u Aç</a></td>
+                                                <td><a href="/Admin/AdminComment/Index/@item.blogID" class="btn btn-outline-warning">Yorumlar</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

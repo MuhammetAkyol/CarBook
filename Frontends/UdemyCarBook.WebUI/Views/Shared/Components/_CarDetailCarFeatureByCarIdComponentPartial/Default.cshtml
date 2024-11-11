@@ -1,0 +1,32 @@
+﻿@model List<ResultCarFeatureByCarIdDto>
+
+<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+    <div class="row">
+        @for (int i = 0; i < Model.Count / 5; i++)
+
+        {
+
+            <div class="col-md-4">
+
+                <ul class="features">
+
+                    @for (int a = i * 5; a < ((i + 1) * 5); a++)
+
+                    {
+
+                        <li class="@(Model[a].Available?"check":"remove")"><span class="ion-ios-@(Model[a].Available?"checkmark":"close")"></span>@Model[a].FeatureName</li>
+
+
+
+                    }
+
+                </ul>
+
+            </div>
+
+
+
+        }
+
+    </div>
+</div>

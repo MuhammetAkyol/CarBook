@@ -1,0 +1,59 @@
+﻿@model List<ResultLocationDto>
+<script src="~/chart.js"></script>
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-inline-block">Lokasyon Verileri</h4>
+            <canvas id="myChart" height="220px"></canvas>
+            <script src="~/chart.js"></script>
+            <script>
+                // Rastgele renk üreten fonksiyon
+                function getRandomColor() {
+                    var letters = '0123456789ABCDEF';
+                    var color = '#';
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+
+                // Chart.js grafiğini oluşturma
+                var values = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(values, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            @foreach (var location in Model)
+                            {
+                                @: @Html.Raw(Json.Serialize(location.Name)),
+                            }
+                        ],
+                        datasets: [{
+                            label: 'Araç - Lokasyon Grafiği',
+                            data: [
+                                @foreach (var location in Model)
+                                {
+                                    @: @location.LocationID,
+                                }
+                            ],
+                            backgroundColor: [
+                                @foreach (var location in Model)
+                                {
+                                    @: getRandomColor(), // Burada rastgele renk fonksiyonunu çağırıyoruz
+                                }
+                            ],
+                            borderColor: [
+                                @foreach (var location in Model)
+                                {
+                                    @: getRandomColor(), // Border için de aynı rastgele renk kullanılıyor
+                                }
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
