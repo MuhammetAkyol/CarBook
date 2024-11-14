@@ -44,6 +44,7 @@ https://github.com/user-attachments/assets/94730bdb-6fff-448f-af11-c9eb8590ac56
 ![Ekran görüntüsü 2024-11-11 032210](https://github.com/user-attachments/assets/ee5c84e7-b3db-4f5a-969a-7ad3c0cc18df)
 
 ![Ekran görüntüsü 2024-11-11 032238](https://github.com/user-attachments/assets/f35b811f-451c-4f48-b0f8-07cc48bae69b)
+![image](https://github.com/user-attachments/assets/d83b8ffb-5ca0-4367-b3f8-0ca696275654)
 
 ![Ekran görüntüsü 2024-11-11 032257](https://github.com/user-attachments/assets/5b12ee3a-05bd-4fea-a81a-d11281092824)
 
